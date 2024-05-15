@@ -4,9 +4,6 @@
  */
 package librarysystemrun;
 
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,7 +14,7 @@ import java.awt.*;
 public class Gui extends JFrame {
 
     //these properties are for the login make sure to categorize the rest please
-    private JLabel lblUsername, lblPassword, toplbl, lblwest, lblsouth;
+    private JLabel lblUsername, lblPassword, toplbl, lblwest, lblsouth,blank1,blank2,blank3,blank4;
     private JTextField txtUsername, txtPassword;
     private JButton loginBtn, SignUpBtn;
     private JPanel northPnl, centerPnl, southPnl, eastPnl, westPnl;
@@ -31,6 +28,10 @@ public class Gui extends JFrame {
         lblPassword = new JLabel("Password");
         lblwest = new JLabel("");
         lblsouth = new JLabel("");
+        blank1 = new JLabel("");
+        blank2 = new JLabel("");
+//        blank3 = new JLabel("");
+//        blank4 = new JLabel("");
 
         txtUsername = new JTextField(2); // Set columns for the text fields
         txtPassword = new JTextField(2);
@@ -44,7 +45,7 @@ public class Gui extends JFrame {
         eastPnl = new JPanel();
         westPnl = new JPanel();
         
-        northPnl.setPreferredSize(new Dimension(500,60));
+        northPnl.setPreferredSize(new Dimension(500,90));
         centerPnl.setPreferredSize(new Dimension(100,1));
         eastPnl.setPreferredSize(new Dimension(100,400));
         westPnl.setPreferredSize(new Dimension(100,400));
@@ -61,11 +62,12 @@ public class Gui extends JFrame {
 
     // GUI for the Login people please dont forget
     public void SetLoginGui() {
+        this.setTitle("Login");
         this.setVisible(true);
-        this.setSize(500, 500);
+        this.setSize(500, 250);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        centerPnl.setLayout(new GridLayout(2, 2));
+        centerPnl.setLayout(new GridLayout(3, 2));
         southPnl.setLayout(new GridLayout(1, 2));
         eastPnl.setLayout(new GridLayout(2, 1));
         westPnl.setLayout(new GridLayout(2, 1));
@@ -81,6 +83,10 @@ public class Gui extends JFrame {
         centerPnl.add(txtUsername);
         centerPnl.add(lblPassword);
         centerPnl.add(txtPassword);
+        centerPnl.add(blank1);
+        centerPnl.add(blank2);
+//        centerPnl.add(blank3);
+//        centerPnl.add(blank4);
 
         southPnl.add(loginBtn);
         southPnl.add(SignUpBtn);
