@@ -7,6 +7,7 @@ package librarysystemrun;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -87,6 +88,8 @@ public class Gui extends JFrame implements ActionListener {
         audioBtn.addActionListener(this);
         exitBtn.addActionListener(this);
         logoutBtn.addActionListener(this);
+        dTable = new DefaultTableModel();
+        table = new JTable(dTable);
         
     }
 
@@ -233,14 +236,60 @@ public class Gui extends JFrame implements ActionListener {
         this.repaint();
 
     }
+    
+    
+    DefaultTableModel dTable;
+    JTable table = new JTable(dTable);
+    public void bookSection(){
+        
+        this.setTitle("Books");
+        this.setVisible(true);
+        this.setSize(500, 250);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        northPnl.removeAll();
+        centerPnl.removeAll();
+        southPnl.removeAll();
+        eastPnl.removeAll();
+        westPnl.removeAll();
+
+         
+        centerPnl.setLayout(new GridLayout(2, 2));
+        southPnl.setLayout(new GridLayout(1, 2));
+
+        northPnl.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        toplbl.setText("Books");
+        northPnl.add(toplbl);
+
+        
+        dTable.addColumn("number");
+        dTable.addColumn("Book Name");
+        dTable.addColumn("Genre");
+        dTable.addColumn("IBN");
+        dTable.addColumn("Selected");
+        JScrollPane scrollPane = new JScrollPane(table);
+        centerPnl.add(scrollPane);
+        
+        
+        this.add(centerPnl, BorderLayout.CENTER);
+        this.add(southPnl, BorderLayout.SOUTH);
+
+        this.revalidate();
+        this.repaint();
+    
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginBtn) {
-            JOptionPane.showMessageDialog(this, "Welcome");
+            JOptionPane.showMessageDialog(this, "Welcome user");
             this.topMenu();
         } else if (e.getSource() == SignUpBtn) {
-            JOptionPane.showMessageDialog(this, "Welcome");
+            JOptionPane.showMessageDialog(this, "fill in all the details");
             this.setSignUp();
         } else if (e.getSource() == spBtn) {
             JOptionPane.showMessageDialog(this, "You have signed up");
@@ -248,6 +297,8 @@ public class Gui extends JFrame implements ActionListener {
             this.SetLoginGui();
         } else if (e.getSource() == exitBtn){
             System.exit(0);
+        } else if(e.getSource() == bookBtn ){
+            this.bookSection();
         }
 
     }
